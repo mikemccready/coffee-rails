@@ -1,0 +1,2 @@
+class CoffeePod < ApplicationRecord
+end

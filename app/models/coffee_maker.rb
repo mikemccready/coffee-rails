@@ -1,0 +1,2 @@
+class CoffeeMaker < ApplicationRecord
+end
