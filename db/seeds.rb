@@ -7,4 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-CoffeeMaker.create(product_type: 'COFFEE_POD_LARGE', water_line_compatible: true, sku: 'CM102')
+CoffeeMaker.create(product_type: 'COFFEE_MACHINE_SMALL', water_line_compatible: false, sku: 'CM001')
+CoffeeMaker.create(product_type: 'COFFEE_MACHINE_SMALL', water_line_compatible: false, sku: 'CM002')
+CoffeeMaker.create(product_type: 'COFFEE_MACHINE_SMALL', water_line_compatible: true, sku: 'CM003')
+CoffeeMaker.create(product_type: 'COFFEE_MACHINE_LARGE', water_line_compatible: false, sku: 'CM101')
+CoffeeMaker.create(product_type: 'COFFEE_MACHINE_LARGE', water_line_compatible: true, sku: 'CM102')
+CoffeeMaker.create(product_type: 'COFFEE_MACHINE_LARGE', water_line_compatible: true, sku: 'CM103')
+CoffeeMaker.create(product_type: 'ESPRESSO_MACHINE', water_line_compatible: false, sku: 'EM001')
+CoffeeMaker.create(product_type: 'ESPRESSO_MACHINE', water_line_compatible: false, sku: 'EM002')
+CoffeeMaker.create(product_type: 'ESPRESSO_MACHINE', water_line_compatible: true, sku: 'EM003')
