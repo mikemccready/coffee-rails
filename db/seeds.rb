@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+CoffeeMaker.create(product_type: 'COFFEE_POD_LARGE', water_line_compatible: true, sku: 'CM102')
