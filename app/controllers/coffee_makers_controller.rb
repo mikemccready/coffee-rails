@@ -1,7 +1,11 @@
 class CoffeeMakersController < ApplicationController
+	def index
+		@coffee_maker = CoffeeMaker.all
+	end
 	def show
 		@coffee_maker = CoffeeMaker.find(params[:id])
 	end
+
 	def new
 	end
 

@@ -1,0 +1,18 @@
+<h1>Coffee Maker Inventory</h1>
+ 
+<table>
+  <tr>
+    <th>Product Type</th>
+    <th>Water Level</th>
+    <th>SKU</th>
+  </tr>
+ 
+  <% @coffee_maker.each do |coffee_maker| %>
+    <tr>
+      <td><%= coffee_maker.product_type %></td>
+      <td><%= coffee_maker.water_line_compatible %></td>
+      <td><%= coffee_maker.sku %></td>
+      <td><%= link_to 'Show', coffee_maker_path(coffee_maker) %></td>
+    </tr>
+  <% end %>
+</table>
