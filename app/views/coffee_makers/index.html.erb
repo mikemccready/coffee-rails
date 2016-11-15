@@ -13,6 +13,10 @@
       <td><%= coffee_maker.water_line_compatible %></td>
       <td><%= coffee_maker.sku %></td>
       <td><%= link_to 'Show', coffee_maker_path(coffee_maker) %></td>
+      <td><%= link_to 'Edit', edit_coffee_maker_path(coffee_maker) %></td>
+      <td><%= link_to 'Destroy', coffee_maker_path(coffee_maker),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>

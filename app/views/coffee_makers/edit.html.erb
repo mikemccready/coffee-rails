@@ -1,0 +1,35 @@
+<h1>Edit Coffee Maker Info</h1>
+<%= form_for :coffee_maker, url: coffee_maker_path(@coffee_maker), method: :patch do |f| %>
+
+	<% if @coffee_maker.errors.any? %>
+		<div id="error_explanation">
+		  	<h2>
+		    	<%= pluralize(@coffee_maker.errors.count, "error") %> prohibited
+		    this coffee_maker from being saved:
+		  	</h2>
+		  	<ul>
+		    	<% @coffee_maker.errors.full_messages.each do |msg| %>
+		      		<li><%= msg %></li>
+		    	<% end %>
+		  	</ul>
+		</div>
+	<% end %>
+
+	<p>
+		<%= f.label :product_type %><br>
+    	<%= f.select :product_type, ['COFFEE_MACHINE_LARGE', 'COFFEE_MACHINE_SMALL', 'ESPRESSO_MACHINE']%>
+	</p>
+	<p>
+		<%= f.label :water_line_compatible %><br>
+    	<%= f.select :water_line_compatible, [true, false]%>
+	</p>
+	<p>
+		<%= f.label :sku %><br>
+		<%= f.text_field :sku %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+	<%= link_to 'Back', coffee_makers_path %>
+<% end %>

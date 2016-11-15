@@ -7,13 +7,37 @@ class CoffeeMakersController < ApplicationController
 	end
 
 	def new
+		@coffee_maker = CoffeeMaker.new
+	end
+
+	def edit
+		@coffee_maker = CoffeeMaker.find(params[:id])
 	end
 
 	def create
 		@coffee_maker = CoffeeMaker.new(coffee_maker_params)
 
-		@coffee_maker.save
-		redirect_to @coffee_maker
+		if @coffee_maker.save
+			redirect_to @coffee_maker
+		else
+			render 'new'
+		end
+	end
+
+	def update
+		@coffee_maker = CoffeeMaker.find(params[:id])
+		if @coffee_maker.update(coffee_maker_params)
+			redirect_to @coffee_maker
+		else
+			render 'edit'
+		end		
+	end
+
+	def destroy
+		@coffee_maker = CoffeeMaker.find(params[:id])
+		@coffee_maker.destroy
+
+		redirect_to coffee_makers_path
 	end
 
 	private
