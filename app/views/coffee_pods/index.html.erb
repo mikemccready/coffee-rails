@@ -1,0 +1,26 @@
+<h1>Coffee Pod Inventory</h1>
+ 
+<table>
+  <tr>
+    <th>Product Type</th>
+    <th>Coffee Flavor</th>
+    <th>Pack Size</th>
+    <th>SKU</th>
+  </tr>
+ 
+  <% @coffee_pod.each do |coffee_pod| %>
+    <tr>
+      <td><%= coffee_pod.product_type %></td>
+      <td><%= coffee_pod.coffee_flavor %></td>
+      <td><%= coffee_pod.pack_size %></td>
+      <td><%= coffee_pod.sku %></td>
+
+<!--       <td><%= link_to 'Show', coffee_maker_path(coffee_maker) %></td>
+      <td><%= link_to 'Edit', edit_coffee_maker_path(coffee_maker) %></td>
+      <td><%= link_to 'Destroy', coffee_maker_path(coffee_maker),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td> -->
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'Add Coffee Maker', new_coffee_maker_path %>
