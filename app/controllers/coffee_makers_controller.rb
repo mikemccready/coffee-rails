@@ -1,47 +1,51 @@
 class CoffeeMakersController < ApplicationController
-	def index
-		@coffee_maker = CoffeeMaker.all
-	end
-	def show
-		@coffee_maker = CoffeeMaker.find(params[:id])
-	end
+  before_action :set_coffee_maker, only: [:show, :update, :destroy]
 
-	def new
-		@coffee_maker = CoffeeMaker.new
-	end
+  # GET /coffee_makers
+  def index
+    @coffee_makers = CoffeeMaker.all
 
-	def edit
-		@coffee_maker = CoffeeMaker.find(params[:id])
-	end
+    render json: @coffee_makers
+  end
 
-	def create
-		@coffee_maker = CoffeeMaker.new(coffee_maker_params)
+  # GET /coffee_makers/1
+  def show
+    render json: @coffee_maker
+  end
 
-		if @coffee_maker.save
-			redirect_to @coffee_maker
-		else
-			render 'new'
-		end
-	end
+  # POST /coffee_makers
+  def create
+    @coffee_maker = CoffeeMaker.new(coffee_maker_params)
 
-	def update
-		@coffee_maker = CoffeeMaker.find(params[:id])
-		if @coffee_maker.update(coffee_maker_params)
-			redirect_to @coffee_maker
-		else
-			render 'edit'
-		end		
-	end
+    if @coffee_maker.save
+      render json: @coffee_maker, status: :created, location: @coffee_maker
+    else
+      render json: @coffee_maker.errors, status: :unprocessable_entity
+    end
+  end
 
-	def destroy
-		@coffee_maker = CoffeeMaker.find(params[:id])
-		@coffee_maker.destroy
+  # PATCH/PUT /coffee_makers/1
+  def update
+    if @coffee_maker.update(coffee_maker_params)
+      render json: @coffee_maker
+    else
+      render json: @coffee_maker.errors, status: :unprocessable_entity
+    end
+  end
 
-		redirect_to coffee_makers_path
-	end
+  # DELETE /coffee_makers/1
+  def destroy
+    @coffee_maker.destroy
+  end
 
-	private
-		def coffee_maker_params
-			params.require(:coffee_maker).permit(:product_type, :water_line_compatible, :sku)
-		end
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_coffee_maker
+      @coffee_maker = CoffeeMaker.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def coffee_maker_params
+      params.require(:coffee_maker).permit(:product_type, :water_line_compatible, :sku)
+    end
 end
