@@ -14,13 +14,8 @@
       <td><%= coffee_pod.coffee_flavor %></td>
       <td><%= coffee_pod.pack_size %></td>
       <td><%= coffee_pod.sku %></td>
-
-<!--       <td><%= link_to 'Show', coffee_maker_path(coffee_maker) %></td>
-      <td><%= link_to 'Edit', edit_coffee_maker_path(coffee_maker) %></td>
-      <td><%= link_to 'Destroy', coffee_maker_path(coffee_maker),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td> -->
     </tr>
   <% end %>
 </table>
-<%= link_to 'Add Coffee Maker', new_coffee_maker_path %>
+<%= link_to 'View Coffee Makers', coffee_makers_path %><br>
+<%= link_to 'Home', root_path %>
