@@ -6,14 +6,14 @@ const webpack = require('webpack');
 const buildDirectory = './dist/';
 
 module.exports = {
-  entry: './client',
+  entry: './client/index',
   devServer: {
     hot: true,
     inline: true,
     port: 7700,
     historyApiFallback: true,
     proxy: {
-      '/*': 'http://localhost:3000'
+      '/': 'http://localhost:3000'
     },
   },
   resolve: {
