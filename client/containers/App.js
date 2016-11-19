@@ -5,16 +5,19 @@ export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			machines: []
+			machineData: [],
+			podData: []
 		}
-		this.getMachines = this.getMachines.bind(this);
+		this.getMachineData = this.getMachineData.bind(this);
+		this.getPodData = this.getPodData.bind(this);
 	}
 
 	componentDidMount() {
-		this.getMachines();
+		this.getMachineData();
+		this.getPodData();
 	}
 
-	getMachines() {
+	getMachineData() {
 		const that = this;
 		fetch('http://localhost:3000/coffee_makers/')  
 		  .then(response => {  
@@ -22,8 +25,25 @@ export default class App extends React.Component {
 	        console.log('Error. Status Code: ' + response.status);  
 	        return;  
 	      }
-	      response.json().then(data => {  
-	        that.setState({machines: data})  
+	      response.json().then(data => { 
+	        that.setState({machineData: data})  
+	      });  
+		  })  
+		  .catch(err => {  
+		    console.log('Fetch Error :-S', err);  
+		  });
+	}
+
+	getPodData() {
+		const that = this;
+		fetch('http://localhost:3000/coffee_pods/')  
+		  .then(response => {  
+	      if (response.status !== 200) {  
+	        console.log('Error. Status Code: ' + response.status);  
+	        return;  
+	      }
+	      response.json().then(data => { 
+	        that.setState({podData: data})  
 	      });  
 		  })  
 		  .catch(err => {  
@@ -32,14 +52,24 @@ export default class App extends React.Component {
 	}
 
 	render() {
-		const machines = this.state.machines.map((machine, i) => {
-			return <div key={i}>{machine.product_type}</div>
+		const machines = this.state.machineData.map((machine, i) => {
+			return <div key={i}>{machine.product_type}<br/><br/></div>
+		})
+
+		const pods = this.state.podData.map((pod, i) => {
+			return 	<div key={i}>
+								{pod.product_type}<br/>
+								{pod.coffee_flavor}
+								<br/><br/>
+							</div>
 		})
 
 		return(
 			<div>
 				<h3>Machines</h3>
 				{ machines }
+				<h3>Pods</h3>
+				{ pods }
 			</div>
 		)
 	}
