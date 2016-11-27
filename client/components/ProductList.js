@@ -54,7 +54,7 @@ export default class ProductList extends React.Component {
 
 	render() {
 		const machines = this.state.machineData.map((machine, i) => {
-			const productLink = '/products/coffee-makers/' + machine.id;
+			const productLink = '/products/coffee_makers/' + machine.id;
 			return 	<div key={i}>
 								<Link to={productLink}>
 									{machine.product_type}
@@ -64,7 +64,7 @@ export default class ProductList extends React.Component {
 		})
 
 		const pods = this.state.podData.map((pod, i) => {
-			const productLink = '/products/coffee-pods/' + pod.id;
+			const productLink = '/products/coffee_pods/' + pod.id;
 			return 	<div key={i}>
 								<Link to={productLink}>
 									{pod.product_type}<br/>
