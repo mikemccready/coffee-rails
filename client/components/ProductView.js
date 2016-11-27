@@ -40,6 +40,6 @@ export default class ProductView extends React.Component {
 
 	render() {
 		console.log(this.state.productData)
-		return <div>{this.state.productData.product_type}</div>
+		return <div>{this.state.productData.product_title}</div>
 	}
 }

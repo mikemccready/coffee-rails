@@ -57,7 +57,8 @@ export default class ProductList extends React.Component {
 			const productLink = '/products/coffee_makers/' + machine.id;
 			return 	<div key={i}>
 								<Link to={productLink}>
-									{machine.product_type}
+									{machine.product_title}<br/>
+									{machine.sku}
 									<br/><br/>
 								</Link>
 							</div>
@@ -67,8 +68,8 @@ export default class ProductList extends React.Component {
 			const productLink = '/products/coffee_pods/' + pod.id;
 			return 	<div key={i}>
 								<Link to={productLink}>
-									{pod.product_type}<br/>
-									{pod.coffee_flavor}
+									{pod.product_title}<br/>
+									Quantity: {pod.pack_size}
 									<br/><br/>
 								</Link>
 							</div>
