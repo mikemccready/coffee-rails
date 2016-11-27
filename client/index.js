@@ -15,8 +15,7 @@ render((
 		<Route path="/" component={App}>
 			<IndexRedirect to="products"/>
 			<Route path="products" component={ProductList}/>
-			<Route path="/products/coffee-pods/:id" component={ProductView}/>
-			<Route path="/products/coffee-makers/:id" component={ProductView}/>
+			<Route path="/products/:product/:id" component={ProductView}/>
 		</Route>
 	</Router>
 ), appRoot);
