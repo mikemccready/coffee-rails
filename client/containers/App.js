@@ -1,6 +1,8 @@
 // App.js
 import React from 'react';
 
+import ProductList from '../components/ProductList';
+
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -52,25 +54,6 @@ export default class App extends React.Component {
 	}
 
 	render() {
-		const machines = this.state.machineData.map((machine, i) => {
-			return <div key={i}>{machine.product_type}<br/><br/></div>
-		})
-
-		const pods = this.state.podData.map((pod, i) => {
-			return 	<div key={i}>
-								{pod.product_type}<br/>
-								{pod.coffee_flavor}
-								<br/><br/>
-							</div>
-		})
-
-		return(
-			<div>
-				<h3>Machines</h3>
-				{ machines }
-				<h3>Pods</h3>
-				{ pods }
-			</div>
-		)
+		return <ProductList machineData={this.state.machineData} podData={this.state.podData} />
 	}
 }
