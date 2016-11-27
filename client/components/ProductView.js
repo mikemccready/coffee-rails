@@ -4,21 +4,42 @@ export default class ProductView extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			product: ''
+			product: undefined,
+			id: undefined,
+			productData: {}
 		}
+		this.getProductData = this.getProductData.bind(this);
 	}
 
 	componentWillMount() {
-		let product = window.location.pathname;
-		this.setState({product: product})
+		const product = this.props.params.product;
+		const id = this.props.params.id
+		this.setState({product: product, id: id})
 	}
 
 	componentDidMount() {
-		// this.getProductData();
+		this.getProductData();
+	}
+
+	getProductData() {
+		const that = this;
+		fetch(`http://localhost:3000/${this.state.product}/${this.state.id}`)  
+		  .then(response => {  
+	      if (response.status !== 200) {  
+	        console.log('Error. Status Code: ' + response.status);  
+	        return;  
+	      }
+	      response.json().then(data => { 
+	        that.setState({productData: data})  
+	      });  
+		  })  
+		  .catch(err => {  
+		    console.log('Fetch Error :-S', err);  
+		  });
 	}
 
 	render() {
-		console.log(window.location)
-		return <div>{this.state.product}</div>
+		console.log(this.state.productData)
+		return <div>{this.state.productData.product_type}</div>
 	}
 }
