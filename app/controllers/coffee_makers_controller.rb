@@ -10,7 +10,7 @@ class CoffeeMakersController < ApplicationController
 
   # GET /coffee_makers/1
   def show
-    render json: @coffee_maker
+    render json: @coffee_maker, :include => :coffee_pods
   end
 
   # POST /coffee_makers
