@@ -5,10 +5,6 @@ import { Link } from 'react-router';
 export default class ProductList extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			machineData: [],
-			podData: []
-		}
 		this.getMachineData = this.getMachineData.bind(this);
 		this.getPodData = this.getPodData.bind(this);
 	}
@@ -27,7 +23,7 @@ export default class ProductList extends React.Component {
 	        return;  
 	      }
 	      response.json().then(data => { 
-	        that.setState({machineData: data})  
+	        that.props.setMachineData(data);  
 	      });  
 		  })  
 		  .catch(err => {  
@@ -44,7 +40,7 @@ export default class ProductList extends React.Component {
 	        return;  
 	      }
 	      response.json().then(data => { 
-	        that.setState({podData: data})  
+	        that.props.setPodData(data);
 	      });  
 		  })  
 		  .catch(err => {  
@@ -53,7 +49,8 @@ export default class ProductList extends React.Component {
 	}
 
 	render() {
-		const machines = this.state.machineData.map((machine, i) => {
+		console.log('product list', this.props.machineData)
+		const machines = this.props.machineData.map((machine, i) => {
 			const productLink = '/products/coffee_makers/' + machine.id;
 			return 	<div key={i}>
 								<Link to={productLink}>
@@ -64,7 +61,7 @@ export default class ProductList extends React.Component {
 							</div>
 		})
 
-		const pods = this.state.podData.map((pod, i) => {
+		const pods = this.props.podData.map((pod, i) => {
 			const productLink = '/products/coffee_pods/' + pod.id;
 			return 	<div key={i}>
 								<Link to={productLink}>
@@ -78,9 +75,9 @@ export default class ProductList extends React.Component {
 		return(
 			<div>
 				<h3>Machines</h3>
-				{ machines }
+				{machines}
 				<h3>Pods</h3>
-				{ pods }
+				{pods}
 			</div>
 		)	
 	}
