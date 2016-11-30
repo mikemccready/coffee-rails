@@ -6,7 +6,7 @@ export default function ProductList(props) {
 	const machines = props.machineData.map((machine, i) => {
 		const productLink = '/products/coffee_makers/' + machine.id;
 		return 	<div key={i}>
-							<Link to={productLink}>
+							<Link to={productLink} onClick={props.setSelectedProduct.bind(null, machine)}>
 								{machine.product_title}<br/>
 								{machine.sku}
 								<br/><br/>
@@ -17,7 +17,7 @@ export default function ProductList(props) {
 	const pods = props.podData.map((pod, i) => {
 		const productLink = '/products/coffee_pods/' + pod.id;
 		return 	<div key={i}>
-							<Link to={productLink}>
+							<Link to={productLink} onClick={props.setSelectedProduct.bind(null, pod)}>
 								{pod.product_title}<br/>
 								Quantity: {pod.pack_size}
 								<br/><br/>

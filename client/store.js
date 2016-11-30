@@ -7,7 +7,8 @@ import rootReducer from './reducers/index';
 
 const defaultState = {
 	machineData: [],
-	podData: []
+	podData: [],
+	selectedProduct: {}
 }
 
 const store = createStore(rootReducer, defaultState);
