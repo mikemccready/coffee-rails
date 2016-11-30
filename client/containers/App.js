@@ -68,7 +68,8 @@ class AppComponent extends React.Component {
 function mapStateToProps(state) {
 	return {
 		machineData: state.machineData,
-		podData: state.podData
+		podData: state.podData,
+		selectedProduct: state.selectedProduct
 	}
 }
 
