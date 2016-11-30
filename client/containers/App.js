@@ -66,7 +66,6 @@ class AppComponent extends React.Component {
 }
 
 function mapStateToProps(state) {
-	console.log('app', state)
 	return {
 		machineData: state.machineData,
 		podData: state.podData
