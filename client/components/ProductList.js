@@ -2,83 +2,35 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default class ProductList extends React.Component {
-	constructor(props) {
-		super(props);
-		this.getMachineData = this.getMachineData.bind(this);
-		this.getPodData = this.getPodData.bind(this);
-	}
+export default function ProductList(props) {
+	const machines = props.machineData.map((machine, i) => {
+		const productLink = '/products/coffee_makers/' + machine.id;
+		return 	<div key={i}>
+							<Link to={productLink}>
+								{machine.product_title}<br/>
+								{machine.sku}
+								<br/><br/>
+							</Link>
+						</div>
+	})
 
-	componentDidMount() {
-		this.getMachineData();
-		this.getPodData();
-	}
+	const pods = props.podData.map((pod, i) => {
+		const productLink = '/products/coffee_pods/' + pod.id;
+		return 	<div key={i}>
+							<Link to={productLink}>
+								{pod.product_title}<br/>
+								Quantity: {pod.pack_size}
+								<br/><br/>
+							</Link>
+						</div>
+	})
 
-	getMachineData() {
-		const that = this;
-		fetch('http://localhost:3000/coffee_makers/')  
-		  .then(response => {  
-	      if (response.status !== 200) {  
-	        console.log('Error. Status Code: ' + response.status);  
-	        return;  
-	      }
-	      response.json().then(data => { 
-	        that.props.setMachineData(data);  
-	      });  
-		  })  
-		  .catch(err => {  
-		    console.log('Fetch Error :-S', err);  
-		  });
-	}
-
-	getPodData() {
-		const that = this;
-		fetch('http://localhost:3000/coffee_pods/')  
-		  .then(response => {  
-	      if (response.status !== 200) {  
-	        console.log('Error. Status Code: ' + response.status);  
-	        return;  
-	      }
-	      response.json().then(data => { 
-	        that.props.setPodData(data);
-	      });  
-		  })  
-		  .catch(err => {  
-		    console.log('Fetch Error :-S', err);  
-		  });
-	}
-
-	render() {
-		console.log('product list', this.props.machineData)
-		const machines = this.props.machineData.map((machine, i) => {
-			const productLink = '/products/coffee_makers/' + machine.id;
-			return 	<div key={i}>
-								<Link to={productLink}>
-									{machine.product_title}<br/>
-									{machine.sku}
-									<br/><br/>
-								</Link>
-							</div>
-		})
-
-		const pods = this.props.podData.map((pod, i) => {
-			const productLink = '/products/coffee_pods/' + pod.id;
-			return 	<div key={i}>
-								<Link to={productLink}>
-									{pod.product_title}<br/>
-									Quantity: {pod.pack_size}
-									<br/><br/>
-								</Link>
-							</div>
-		})
-
-		return(
-			<div>
-				<h3>Machines</h3>
-				{machines}
-				<h3>Pods</h3>
-				{pods}
-			</div>
-		)	
-	}
+	return(
+		<div>
+			<h3>Machines</h3>
+			{machines}
+			<h3>Pods</h3>
+			{pods}
+		</div>
+	)
 }

@@ -5,7 +5,7 @@ class CoffeeMakersController < ApplicationController
   def index
     @coffee_makers = CoffeeMaker.all
 
-    render json: @coffee_makers
+    render json: @coffee_makers, :include => :coffee_pods
   end
 
   # GET /coffee_makers/1
