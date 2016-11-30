@@ -12,3 +12,10 @@ export function setPodData(data) {
 		data
 	}
 }
+
+export function setSelectedProduct(data) {
+	return {
+		type: 'SET_SELECTED_PRODUCT',
+		data
+	}
+}
