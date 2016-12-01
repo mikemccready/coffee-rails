@@ -1,24 +1,30 @@
-# README
+#React-Rails E-Commerce
+E-commerce demo built with Rails API, MySQL database, React and Redux.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Installation
+Make sure Ruby and Rails are installed on your machine
+`ruby -v
+rails -v`
 
-Things you may want to cover:
+Clone our project through the command-line
+`git clone https://github.com/mikemccready/react-rails.git
+cd react-rails
+`
+Install dependencies
+`bundle install
+npm install`
 
-* Ruby version
+Create/seed database and migrate schema
+`mysql.server start
+rake db:create
+rake db:migrate
+rake db:seed`
 
-* System dependencies
+### Usage
+Start our Rails server
+`npm start`
 
-* Configuration
+In another tab, start the React development server
+`npm run dev:hot`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Navigate to http://localhost:7700/
